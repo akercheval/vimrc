@@ -38,6 +38,11 @@ endtry
 ":inoremap <buffer> eee #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr>
 
 " silences visual and audio alerts
+" ***NOTE***
+" This technically only removes those alerts for command-line vim. If you use gvim
+" and want these alerts gone as well, add this to your .gvimrc as well:
+"                       :set noerrorbells
+"                       :set vb t_vb=
 :set visualbell
 :set t_vb=
 
