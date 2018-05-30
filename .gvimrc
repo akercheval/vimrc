@@ -59,3 +59,9 @@ set nofoldenable
 
 " map space bar to case insensitive search
 :nnoremap <space> :/\c
+
+" natural copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
