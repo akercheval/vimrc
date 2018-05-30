@@ -1,30 +1,30 @@
-set runtimepath+=~/.vim_runtime
-
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
-
-try
-source ~/.vim_runtime/my_configs.vim
-catch
-endtry
-
-:execute pathogen#infect()
+"set runtimepath+=~/.vim_runtime
+"
+"source ~/.vim_runtime/vimrcs/basic.vim
+"source ~/.vim_runtime/vimrcs/filetypes.vim
+"source ~/.vim_runtime/vimrcs/plugins_config.vim
+"source ~/.vim_runtime/vimrcs/extended.vim
+"
+"try
+"source ~/.vim_runtime/my_configs.vim
+"catch
+"endtry
+"
+":execute pathogen#infect()
 
 " map 'jk' to esc in insert mode
 :inoremap jk <esc>
 
-" sets font in gvim to Inconsolata, with non-curly quote marks
-:set guifont=Inconsolata-dz\ 11
+" sets font in gvim to Iosevka
+:set guifont=Iosevka\ 12.5
 
 " color scheme!
 :syntax enable
 :set background=dark
-:colorscheme solarized
+:colorscheme alocasia
 
 " highlights lines that go past the 80 column mark in red
-:match ErrorMsg '\%>80v.\+'
+":match ErrorMsg '\%>80v.\+'
 
 " runs python script by hitting backtick twice
 :nnoremap <buffer> `` :exec '!python3' shellescape(@%, 1)<cr>
@@ -51,3 +51,11 @@ nnoremap ! :!
 
 " disable auto folding
 set nofoldenable 
+
+" hide menu, toolbar, scrollbar
+:set go-=m
+:set go-=T
+:set go-=r
+
+" map space bar to case insensitive search
+:nnoremap <space> :/\c
