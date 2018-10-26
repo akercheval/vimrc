@@ -1,13 +1,13 @@
 " map 'jk' to esc in insert mode
 :inoremap jk <esc>
 
-" sets font in gvim to Iosevka
-:set guifont=Iosevka\ 12.5
+" font and size
+:set guifont=Inconsolata-dz:h16
 
 " color scheme!
 :syntax enable
 :set background=dark
-:colorscheme alocasia
+:colorscheme dracula
 
 " highlights lines that go past the 80 column mark in red
 ":match ErrorMsg '\%>80v.\+'
@@ -15,8 +15,8 @@
 " runs python script by hitting backtick twice
 :nnoremap <buffer> `` :exec '!python3' shellescape(@%, 1)<cr>
 
-" tabs = 8 spaces
-:set expandtab tabstop=4 shiftwidth=4
+" tabs = 2 spaces
+:set expandtab tabstop=2 shiftwidth=2
 
 " I'm annoyed by Syntastic, so now zi toggles it.
 :nnoremap zi :SyntasticToggleMode<cr>
@@ -51,3 +51,17 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+" c++ formatting tools
+function! ClangFormat()
+    let l = line(".")
+    let c = col(".")
+    execute '%!clang-format -style=file -assume-filename=' . expand ("%:t")
+    execute l . " normal " . c . "|"
+endfunction
+map <C-k> :call ClangFormat()<CR>
+imap <C-k> <Esc>:call ClangFormat()<CR>a
+set shiftwidth=2
+
+" line and column number in bottom right of screen
+:set ruler
